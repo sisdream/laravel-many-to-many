@@ -6,7 +6,7 @@
     <div class="container">
         <a href="{{ route('admin.projects.index') }}" class="btn btn-primary mt-4 mb-3">Torna alla lista</a>
         <h1 class="mb-3">Crea un nuovo progetto</h1>
-        <form action="{{ route('admin.projects.store') }}" method="POST">
+        <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row g-3">
                 <div class="col-6">
@@ -39,6 +39,11 @@
                     @error('description')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
+                </div>
+                  
+                <div class="col-2">
+                    <label class="form-label" for="image">Immagine</label>
+                    <input class="form-control" type="file" name="image" id="image">
                 </div>
 
                 <div class="col-2">
