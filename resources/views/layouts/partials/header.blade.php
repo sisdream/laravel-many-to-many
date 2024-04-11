@@ -16,6 +16,7 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('login') }}">Login</a>
             </li>
+          
             @if (Route::has('register'))
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('register') }}">Register</a>
@@ -40,6 +41,14 @@
                 </form>
               </div>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('admin.projects.index') }}">Progetti</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('admin.types.index') }}">Tipi
+            </a>
+            </li>
+          </ul>
           @endguest
       </div>
     </div>
