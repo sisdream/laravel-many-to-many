@@ -5,9 +5,12 @@
 @section('content')
     <div class="container">
         <a href="{{ route('admin.projects.index') }}" class="btn btn-primary mt-4 mb-3">Torna alla lista</a>
+
         <h1 class="mb-3">Crea un nuovo progetto</h1>
-        <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
+
+        <form enctype="multipart/form-data" action="{{ route('admin.projects.store') }}" method="POST" >
             @csrf
+
             <div class="row g-3">
                 <div class="col-6">
                     <label for="title" class="form-label">Titolo</label>
@@ -17,7 +20,7 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
-
+                    <!-- CATEGORIA! -->
                 <div class="col-6">
                     <label for="type_id" class="form-label">Categoria</label>
                     <select type="text" class="form-select @error('type_id') is-invalid @enderror" id="type_id"
@@ -27,6 +30,7 @@
                         <option {{ $type->id == old('type_id', $project->type_id) ? 'selected' : ''}} value="{{ $type->id }}">{{ $type->label }}</option>
                         @endforeach
                         </select>
+
                     @error('type_id')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -40,10 +44,12 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
-                  
-                <div class="col-2">
-                    <label class="form-label" for="image">Immagine</label>
-                    <input class="form-control" type="file" name="image" id="image">
+    
+                <!-- FILE UPLOAD -->
+                    
+                <div class="mb-3">
+                <label for="image" class="form-label">Inserisci immagine</label>
+                <input type="file" class="form-control" id="image" name="image" accept="image/*">
                 </div>
 
                 <div class="col-2">
