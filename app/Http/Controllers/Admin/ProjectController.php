@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EditProjectRequest;
 use App\Mail\CreatedProject;
 use Illuminate\Support\Facades\Mail;
-use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use App\Models\Type;
 use Illuminate\Http\Request;
@@ -42,9 +42,8 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * 
      */
-    public function store(UpdateProjectRequest $request)
+    public function store(EditProjectRequest $request)
     {
-        $request->validated();
         $data = $request->all();
         $new_project = new Project;
         $new_project->image_url = Storage::put('uploads/projects', $data['image']);
@@ -86,7 +85,7 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * 
      */
-    public function update(UpdateProjectRequest $request, Project $project)
+    public function update(EditProjectRequest $request, Project $project)
     {
         $request->validated();
         $data = $request->all();
