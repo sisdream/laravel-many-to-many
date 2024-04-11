@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Models\Type;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -83,9 +84,13 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        $request->validated();
+        $request->validated();   
 
         $data = $request->all();
+        dd($data["image"]);
+
+        Storage::put();
+
         $project->update($data);
         return redirect()->route('admin.projects.show', compact('project'))->with('message', 'Progetto modificato con successo');
     }

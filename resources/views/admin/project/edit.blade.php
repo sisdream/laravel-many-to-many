@@ -45,6 +45,11 @@
                        <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
+                
+                <div class="col-2">
+                    <label class="form-label" for="image">Immagine</label>
+                    <input class="form-control" type="file" name="image" id="image">
+                </div>
 
                 <div class="col-2">
                     <button class="btn btn-success">Salva</button>
